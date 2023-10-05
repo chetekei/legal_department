@@ -65,8 +65,8 @@ if check_password():
     # Main Streamlit app code
     def main():
     
-    # Create a sidebar to switch between views
-    view = st.sidebar.radio("Select", ["New Update", "Records"])
+        # Create a sidebar to switch between views
+        view = st.sidebar.radio("Select", ["New Update", "Records"])
     
     if view == "New Update":
             # Add the dashboard elements here
