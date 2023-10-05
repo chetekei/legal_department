@@ -40,22 +40,22 @@ def check_password():
         # Password correct.
         return True
 
-# if check_password():
+if check_password():
 
-#     # Define your Google Sheets credentials JSON file (replace with your own)
-#     credentials_path = 'legal-corporate-019720d30928.json'
+    # Define your Google Sheets credentials JSON file (replace with your own)
+    credentials_path = 'legal-corporate-019720d30928.json'
         
-#     # Authenticate with Google Sheets using the credentials
-#     credentials = service_account.Credentials.from_service_account_file(credentials_path, scopes=['https://spreadsheets.google.com/feeds'])
+    # Authenticate with Google Sheets using the credentials
+    credentials = service_account.Credentials.from_service_account_file(credentials_path, scopes=['https://spreadsheets.google.com/feeds'])
         
-#     # Authenticate with Google Sheets using gspread
-#     gc = gspread.authorize(credentials)
+    # Authenticate with Google Sheets using gspread
+    gc = gspread.authorize(credentials)
         
-#     # Your Google Sheets URL
-#     url = "https://docs.google.com/spreadsheets/d/1OGtNQnciAJLJiOmKlfvuZWar0zFwCjA77GwvBe5BF9Q/edit#gid=0"
+    # Your Google Sheets URL
+    url = "https://docs.google.com/spreadsheets/d/1OGtNQnciAJLJiOmKlfvuZWar0zFwCjA77GwvBe5BF9Q/edit#gid=0"
         
-#     # Open the Google Sheets spreadsheet
-#     worksheet = gc.open_by_url(url).worksheet("legal")
+    # Open the Google Sheets spreadsheet
+    worksheet = gc.open_by_url(url).worksheet("legal")
 
 
  # Add a sidebar
