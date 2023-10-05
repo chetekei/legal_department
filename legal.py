@@ -130,7 +130,7 @@ def main():
             href = f'<a href="data:file/csv;base64,{b64}" download="auctioneer_report.csv">Download CSV</a>'
             st.markdown(href, unsafe_allow_html=True)              
 
-if __name__ == "__main__":
+    if __name__ == "__main__":
         main()
 
 
