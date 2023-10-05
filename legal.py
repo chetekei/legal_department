@@ -58,55 +58,55 @@ if check_password():
     worksheet = gc.open_by_url(url).worksheet("legal")
 
 
- # Add a sidebar
-st.sidebar.image('corplogo.PNG', use_column_width=True)
-st.sidebar.markdown("Navigation Pane")
+    # Add a sidebar
+    st.sidebar.image('corplogo.PNG', use_column_width=True)
+    st.sidebar.markdown("Navigation Pane")
     
-# Main Streamlit app code
-def main():
-
+    # Main Streamlit app code
+    def main():
+    
     # Create a sidebar to switch between views
     view = st.sidebar.radio("Select", ["New Update", "Records"])
     
     if view == "New Update":
             # Add the dashboard elements here
         st.subheader("AUCTIONEERS TRACKER & APPROVAL SHEET")
-
+    
         # Create form fields for user input   
         proclamation_date = st.date_input("Date Proclamation Received") 
-
+    
         negotiation_initiated = st.date_input("Date Negotiating Initiated")
-
+    
         decretal_amount = st.number_input("Decretal Amount")
-
+    
         auctioneer_fee = st.number_input("Auctioneer Fees")       
                
         persons_negotiating = st.selectbox("Officers Negotiating:",["Samuel Kangi", "Augustus Kioko"])
-
+    
         final_negotiated_amount = st.number_input("Final Negotiated Amount")
-
+    
         negotiation_date_concluded = st.date_input("Date Negotiation Concluded In Legal")  
-
+    
         checked_by = st.selectbox("Checked By:",["Samuel Kangi", "Augustus Kioko"])
-
+    
         approved_by = st.selectbox("Approved By:",["Samuel Kangi", "Augustus Kioko"])
- 
+    
         payment_processed_date = st.date_input("Date Payment Processed and Passed to Finance")  
-
- 
-
+    
+    
+    
             # Check if the user has entered data and submitted the form
         if st.button("Submit"):
             
             # Create a new row of data to add to the Google Sheets spreadsheet
             new_data = [proclamation_date, negotiation_initiated, decretal_amount, auctioneer_fee, persons_negotiating, final_negotiated_amount, negotiation_date_concluded, checked_by, approved_by, payment_processed_date]
-
+    
             # Append the new row of data to the worksheet
             worksheet.append_row(new_data) 
-
+    
             st.success("Data submitted successfully!")
-
-
+    
+    
     elif view == "Records":
             # Show the saved DataFrame here
         data = worksheet.get_all_values()
@@ -114,15 +114,15 @@ def main():
         data = data[1:]
         df = pd.DataFrame(data, columns=headers)  # Convert data to a DataFrame
         st.subheader("RECORDS")
-
-
+    
+    
         edited_df = st.data_editor(df)
-
+    
         # Add a button to update Google Sheets with the changes
         if st.button("Update Google Sheets"):
             worksheet.clear()  # Clear the existing data in the worksheet
             worksheet.update([edited_df.columns.tolist()] + edited_df.values.tolist())
-
+    
         # Add a button to download the filtered data as a CSV
         if st.button("Download CSV"):
             csv_data = edited_df.to_csv(index=False, encoding='utf-8')
