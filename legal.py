@@ -151,7 +151,7 @@ if check_password():
 
             # Create two columns
             # Create two columns
-            col1, col2 = st.columns(2)
+            col1, col2 = st.rows(2)
 
             
             # Dropdown for Year selection
@@ -163,7 +163,7 @@ if check_password():
                 selected_month = st.selectbox("Filter by Month:", ["All Payments"] + list(unique_month))
             
             # Apply filters to the DataFrame
-            filtered_df = df.copy()
+            filtered_df = df3.copy()
             
             if selected_year != "All Payments":
                 filtered_df = filtered_df[filtered_df['Year'] == int(selected_year)]
