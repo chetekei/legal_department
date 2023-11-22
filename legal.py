@@ -149,12 +149,8 @@ if check_password():
             # Create a dropdown to select a month with "All Payments" option
             selected_month = st.selectbox("Filter by Month:", ["All Payments"] + list(unique_month))
 
-            # Create a single row layout
-            row1 = st.row()
             
-            # Dropdown for Year selection
-            with row1:
-                selected_year = st.selectbox("Filter by Year:", ["All Payments"] + list(unique_year))
+            selected_year = st.selectbox("Filter by Year:", ["All Payments"] + list(unique_year))
             
             # Dropdown for Month selection
             selected_month = st.selectbox("Filter by Month:", ["All Payments"] + list(unique_month))
