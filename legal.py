@@ -150,7 +150,9 @@ if check_password():
             selected_month = st.selectbox("Filter by Month:", ["All Payments"] + list(unique_month))
 
             # Create two columns
-            col1, col2 = st.beta_columns(2)
+            # Create two columns
+            col1, col2 = st.columns(2)
+
             
             # Dropdown for Year selection
             with col1:
