@@ -67,7 +67,7 @@ if check_password():
     def main():
     
         # Create a sidebar to switch between views
-        view = st.sidebar.radio("Select", ["New Update", "Records"])
+        view = st.sidebar.radio("Select", ["New Update", "Records", "Maturity"])
     
         if view == "New Update":
                 # Add the dashboard elements here
