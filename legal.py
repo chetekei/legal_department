@@ -138,13 +138,13 @@ if check_password():
     
             df3 = pd.DataFrame(data, columns = headers)
 
-            unique_year = df['Year'].unique()
+            unique_year = df3['Year'].unique()
     
             # Create a dropdown to select a month with "All Payments" option
             selected_year = st.selectbox("Filter by Year:", ["All Payments"] + list(unique_year))
              
              # Get the unique reviewer names from the DataFrame
-            unique_month = df['Month Name'].unique()
+            unique_month = df3['Month Name'].unique()
     
             # Create a dropdown to select a month with "All Payments" option
             selected_month = st.selectbox("Filter by Month:", ["All Payments"] + list(unique_month))
