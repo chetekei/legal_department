@@ -109,7 +109,7 @@ if check_password():
         
         
         elif view == "Records":
-                # Show the saved DataFrame here
+            # Show the saved DataFrame here
             data = worksheet.get_all_values()
             headers = data[0]
             data = data[1:]
@@ -131,14 +131,14 @@ if check_password():
                 href = f'<a href="data:file/csv;base64,{b64}" download="auctioneer_report.csv">Download CSV</a>'
                 st.markdown(href, unsafe_allow_html=True)  
 
-         elif view == "Maturity":
-             data = worksheet2.get_all_values()
-             headers = data[0]
-             data = data[1:]
+        elif view == "Maturity":
+            data = worksheet2.get_all_values()
+            headers = data[0]
+            data = data[1:]
     
-             df3 = pd.DataFrame(data, columns = headers)
+            df3 = pd.DataFrame(data, columns = headers)
 
-             unique_year = df['Year'].unique()
+            unique_year = df['Year'].unique()
     
             # Create a dropdown to select a month with "All Payments" option
             selected_year = st.selectbox("Filter by Year:", ["All Payments"] + list(unique_year))
