@@ -153,7 +153,7 @@ if check_password():
             filtered_df = df3.copy()
             
             if selected_year != "All Payments":
-                filtered_df = filtered_df[filtered_df['Year'] == int(selected_year)]
+                filtered_df = filtered_df[filtered_df['Year'] == selected_year]
             
             if selected_month != "All Payments":
                 filtered_df = filtered_df[filtered_df['Month Name'] == selected_month]
