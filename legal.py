@@ -149,18 +149,16 @@ if check_password():
             # Create a dropdown to select a month with "All Payments" option
             selected_month = st.selectbox("Filter by Month:", ["All Payments"] + list(unique_month))
 
-            # Create two columns
-            # Create two columns
-            col1, col2 = st.rows(2)
-
+            # Create a single row layout
+            row1 = st.row()
             
             # Dropdown for Year selection
-            with col1:
+            with row1:
                 selected_year = st.selectbox("Filter by Year:", ["All Payments"] + list(unique_year))
             
             # Dropdown for Month selection
-            with col2:
-                selected_month = st.selectbox("Filter by Month:", ["All Payments"] + list(unique_month))
+            selected_month = st.selectbox("Filter by Month:", ["All Payments"] + list(unique_month))
+
             
             # Apply filters to the DataFrame
             filtered_df = df3.copy()
