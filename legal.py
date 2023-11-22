@@ -56,6 +56,7 @@ if check_password():
         
     # Open the Google Sheets spreadsheet
     worksheet = gc.open_by_url(url).worksheet("legal")
+    worksheet2 = gc.open_by_url(url).worksheet("maturity")
 
 
     # Add a sidebar
@@ -128,7 +129,67 @@ if check_password():
                 csv_data = edited_df.to_csv(index=False, encoding='utf-8')
                 b64 = base64.b64encode(csv_data.encode()).decode()
                 href = f'<a href="data:file/csv;base64,{b64}" download="auctioneer_report.csv">Download CSV</a>'
-                st.markdown(href, unsafe_allow_html=True)              
+                st.markdown(href, unsafe_allow_html=True)  
+
+         elif view == "Maturity":
+             data = worksheet2.get_all_values()
+             headers = data[0]
+             data = data[1:]
+    
+             df3 = pd.DataFrame(data, columns = headers)
+
+             unique_year = df['Year'].unique()
+    
+            # Create a dropdown to select a month with "All Payments" option
+            selected_year = st.selectbox("Filter by Year:", ["All Payments"] + list(unique_year))
+             
+             # Get the unique reviewer names from the DataFrame
+            unique_month = df['Month Name'].unique()
+    
+            # Create a dropdown to select a month with "All Payments" option
+            selected_month = st.selectbox("Filter by Month:", ["All Payments"] + list(unique_month))
+
+            # Create two columns
+            col1, col2 = st.beta_columns(2)
+            
+            # Dropdown for Year selection
+            with col1:
+                selected_year = st.selectbox("Filter by Year:", ["All Payments"] + list(unique_year))
+            
+            # Dropdown for Month selection
+            with col2:
+                selected_month = st.selectbox("Filter by Month:", ["All Payments"] + list(unique_month))
+            
+            # Apply filters to the DataFrame
+            filtered_df = df.copy()
+            
+            if selected_year != "All Payments":
+                filtered_df = filtered_df[filtered_df['Year'] == int(selected_year)]
+            
+            if selected_month != "All Payments":
+                filtered_df = filtered_df[filtered_df['Month Name'] == selected_month]
+            
+            # Display the filtered DataFrame
+            st.write("Filtered DataFrame:")
+            st.write(filtered_df)
+
+            
+    
+                
+
+    
+
+        
+             
+
+
+
+
+
+
+
+
+             
 
     if __name__ == "__main__":
         main()
